@@ -1,5 +1,5 @@
 # 🛠️ Variables de compilación
-CC          = cc
+CC          = cc -g
 CFLAGS      = -Wall -Wextra -Werror -Iinc -Ilib/libft/includes -Ilib/mlx_linux
 
 # 📂 Rutas y nombres
