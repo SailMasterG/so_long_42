@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:11:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/26 20:45:44 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/02/26 22:43:10 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int argc , char *argv[])
     if(argc != 2)
         return (1);
     map_reader(argv[1], &mapa1 );
-    
+    free_matrix(mapa1.grid);
     return (0);
 }

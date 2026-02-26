@@ -15,12 +15,14 @@ NAME        = so_long
 SRC_DIR     = src
 SRC         = $(SRC_DIR)/main.c $(SRC_DIR)/map_reader.c $(SRC_DIR)/map_validation.c
 OBJ         = $(SRC:.c=.o)
-
+UTILS_DIR	= utils
+UTILS_SRC	= $(UTILS_DIR)/map_utils.c
+UTILS_OBJ	= $(UTILS_SRC:.c=.o)
 # 📜 Reglas
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB_FT) $(LIB_MLX)
-	$(CC) $(OBJ) $(LIB_FT) $(LIB_MLX) $(LIB_FLAGS) -o $(NAME)
+$(NAME): $(OBJ) $(UTILS_OBJ) $(LIB_FT) $(LIB_MLX)
+	$(CC) $(OBJ) $(UTILS_OBJ) $(LIB_FT) $(LIB_MLX) $(LIB_FLAGS) -o $(NAME)
 	@echo "✨ Voilà! so_long está listo."
 
 $(LIB_FT):
@@ -36,7 +38,7 @@ $(LIB_MLX):
 
 clean:
 	@echo "🧹 Limpiando objetos..."
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(UTILS_OBJ)
 	@make -C $(LIB_FT_DIR) clean
 	@make -C $(LIB_MLX_DIR) clean
 

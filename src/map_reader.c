@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:14:59 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/26 20:45:27 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/02/26 22:41:32 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
 #include "solong.h"
 
 
@@ -65,17 +64,13 @@ int create_map_grid(char **m, t_map *map)
 
     map->grid = malloc((map->rows +1)* sizeof(char *));
     if(!map->grid)
-    {
-        free_matrix(m);
         return (0);
-    }
     while(m[i] != NULL)
     {
         map->grid[i] = ft_strdup(m[i]);
         if(!map->grid[i])
         {
             free_matrix(map->grid);
-            free_matrix(m);
             return (0);
         }
         i++;
@@ -86,33 +81,21 @@ int create_map_grid(char **m, t_map *map)
 
 int map_reader (char *name, t_map *map)
 {
-    int fd;
-    int i = 0;
     char **matriz;
-    
     map->rows = counter_files(name);
-    matriz = malloc((map->rows + 1) * sizeof(char *));
-    if(!matriz)
+    if(map->rows == 0)
         return (0);
-    fd = open(name,  O_RDONLY);
-    if(fd == -1)
+    matriz = matrix_allocate(map->rows);
+    if(!matriz)
+    {
+        printf("Error al asignar memoria para la matriz\n");
+        return (0);
+    }
+    if(!matrix_filler(map->rows,matriz, name))
     {
         free_matrix(matriz);
         return (0);
     }
-    while(i < map->rows )
-    {
-        matriz[i] = get_next_line(fd);
-        if(!matriz)
-        {
-            free_matrix(matriz);
-            close(fd);
-            return (0);
-        }
-        sanitize_line(matriz[i]);
-        i++;
-    }
-    matriz[i] = NULL;
     if(map_validator(matriz, map))
     {
         create_map_grid(matriz, map);
@@ -123,7 +106,6 @@ int map_reader (char *name, t_map *map)
         free_matrix(matriz);
         return (0);
     }
-    
     return (1);
 }
 
