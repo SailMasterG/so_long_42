@@ -9,6 +9,10 @@ typedef struct s_img
     void *img_ptr;
     int img_h;
     int img_w;
+    void *addr;
+    int bbp;
+    int line_len;
+    int endian;
 } t_img;
 
 typedef struct s_map
@@ -25,11 +29,14 @@ typedef struct s_map
 typedef struct s_game {
     void *mlx_ptr;
     void *win_ptr;
-    int win_witdh;
-    int win_heigth;
+    int win_w;
+    int win_h;
+    t_img canvas;
+    t_map map;
     t_img wall;
     t_img floor;
     t_img player;
+    t_img player_win;
     t_img colection;
     t_img img_exit;
     int p_x;

@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:14:59 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/26 22:41:32 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/02/27 19:23:33 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void free_matrix(char **m)
     while(m[i] != NULL)
         free(m[i++]);
     free(m);
- }
+}
 int counter_files(char *name)
 {
     int fd;
