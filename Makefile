@@ -14,7 +14,8 @@ LIB_FLAGS   = -L$(LIB_MLX_DIR) -lmlx -L$(LIB_FT_DIR) -lft -lXext -lX11 -lm -lbsd
 NAME        = so_long
 SRC_DIR     = src
 SRC         = $(SRC_DIR)/main.c $(SRC_DIR)/map_reader.c $(SRC_DIR)/map_validation.c \
-				$(SRC_DIR)/game_start.c $(SRC_DIR)/render_map.c 
+				$(SRC_DIR)/game_start.c $(SRC_DIR)/render_map.c $(SRC_DIR)/close.c 
+OBJ_DIR     = objs
 OBJ_DIR     = objs
 OBJ         = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 UTILS_DIR	= utils

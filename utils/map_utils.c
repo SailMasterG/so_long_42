@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:15:31 by sail91            #+#    #+#             */
-/*   Updated: 2026/02/26 22:31:50 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/02/28 22:42:38 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int matrix_filler(int rows, char **m, const char *name)
     while(i < rows)
     {
         m[i] = get_next_line(fd);
-        if(!m)
+        if(!m[i])
         {
             free_matrix(m);
             close(fd);
@@ -42,7 +42,7 @@ int matrix_filler(int rows, char **m, const char *name)
 char **matrix_allocate(int rows)
 {
     char **matriz;
-    matriz = malloc((rows + 1) * sizeof(char *));
+    matriz = ft_calloc(rows + 1, sizeof(char *));
     if(!matriz)
         return (NULL);
     return (matriz);

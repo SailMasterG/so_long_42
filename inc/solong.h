@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:54:21 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/28 10:11:05 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/02/28 22:11:40 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,14 @@ int game_init(t_game *game);
 
 int generate_assets(t_game *game);
 int render_map(t_game *game);
-t_img load_xpm(void *mlx_p, char *path);
+void load_xpm(void *mlx_p, char *path, t_img *img);
+void put_pixel(t_game *game, int color, int x , int y);
+void sprite(t_game *g, t_img sprite, int pos_x, int pos_y);
+unsigned int get_pixel(t_img *img, int x, int y);
+
+//CLOSE
+int close_window(t_game *game);
+void free_resources(t_game *game);
+void free_sprites(t_game *game);
+
 #endif //SOLONG_H
