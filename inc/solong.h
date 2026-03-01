@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:54:21 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/28 22:11:40 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/01 19:56:14 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 #include "structs.h"
 #include <fcntl.h>
 #include "mlx.h"
+#include <keys.h>
 
-#define TILE_S 64
+//TILE SIZE
+# define TILE_S 64
 // TEXTURES
 
-#define WALL_XPM "textures/pared.xpm"
-#define FLOOR_XPM "textures/suelo_64.xpm"
-#define PLAYER_XPM "textures/pollito_64.xpm"
-#define PLAYER_WIN "textures/gallina_64.xpm"
-#define EXIT_XPM "textures/salida_64.xpm"
-#define COLLECTIBLE "textures/maiz.xpm"
+# define WALL_XPM "textures/pared.xpm"
+# define FLOOR_XPM "textures/suelo_64.xpm"
+# define PLAYER_XPM "textures/pollito_64.xpm"
+# define PLAYER_WIN "textures/gallina_64.xpm"
+# define EXIT_XPM "textures/salida_64.xpm"
+# define COLLECTIBLE "textures/maiz.xpm"
 
 // FUNCTIONS MAPS VALIDATION
 
@@ -55,5 +57,10 @@ unsigned int get_pixel(t_img *img, int x, int y);
 int close_window(t_game *game);
 void free_resources(t_game *game);
 void free_sprites(t_game *game);
+
+
+//KEY_HOOKS_ACTIONS
+int handle_key(int keysym, t_game *game);
+int move_player(t_game *game,int new_y,int new_x);
 
 #endif //SOLONG_H

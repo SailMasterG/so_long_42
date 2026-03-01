@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:11:26 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/28 22:29:26 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/01 19:31:42 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc , char *argv[])
     }
     render_map(&game);
     mlx_hook(game.win_ptr, 17, 0, close_window, &game);
+    mlx_hook(game.win_ptr, 2, 1L<<0, handle_key, &game);
     mlx_loop(game.mlx_ptr);
     free_resources(&game);
     return (0);

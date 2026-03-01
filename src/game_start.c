@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 18:07:36 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/28 22:29:51 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/01 21:43:26 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int game_init(t_game *game)
     game->p_x = 0;
     game->p_y = 0;
     game->moves = 0;
+    game->map.exit = 0;
+    game->prev_tile = '0';
     canva->img_w = game->win_w;
     canva->img_h = game->win_h;
     canva->img_ptr = mlx_new_image(game->mlx_ptr, canva->img_w, canva->img_h);

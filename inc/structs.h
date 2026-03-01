@@ -39,6 +39,7 @@ typedef struct s_game {
     t_img player_win;
     t_img colection;
     t_img img_exit;
+    char prev_tile;
     int p_x;
     int p_y;
     int moves;
