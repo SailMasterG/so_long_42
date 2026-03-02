@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:14:59 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/27 19:23:33 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:54:04 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int counter_files(char *name)
     return (count);
 
 }
-
+/* Sirve para generar la grid de la structura */
 int create_map_grid(char **m, t_map *map)
 {
     int i;

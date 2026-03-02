@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:54:21 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/01 19:56:14 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/02 20:25:34 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int counter_files(char *name);
 int is_suround_by_mur(char **map_matrix, t_map *map);
 int valid_map_char(char **map_matrix, t_map *map);
 int is_rectangle(char **matrix, t_map *map);
+char **copy_matrix(char **matrix, int rows);
+int  validate_accessibility(char **matrix, t_game *game);
+void flood_fill(char **copy, t_game *game, int y, int x, int *c_token);
 
 int game_init(t_game *game);
 

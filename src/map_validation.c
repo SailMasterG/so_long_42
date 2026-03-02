@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:14:59 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/26 20:33:49 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:19:53 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
