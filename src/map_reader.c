@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 13:14:59 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/02 15:54:04 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:56:10 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void sanitize_line(char *str)
 void free_matrix(char **m)
 {
     int i;
+    if (m == NULL)
+        return;
     i = 0;
     while(m[i] != NULL)
         free(m[i++]);
@@ -79,7 +81,7 @@ int create_map_grid(char **m, t_map *map)
     return (1);
 }
 
-int map_reader (char *name, t_map *map)
+int map_reader (char *name, t_map *map, t_game *game)
 {
     char **matriz;
     map->rows = counter_files(name);
@@ -96,7 +98,7 @@ int map_reader (char *name, t_map *map)
         free_matrix(matriz);
         return (0);
     }
-    if(map_validator(matriz, map))
+    if(map_validator(matriz, map, game))
     {
         create_map_grid(matriz, map);
         free_matrix(matriz);
@@ -108,5 +110,3 @@ int map_reader (char *name, t_map *map)
     }
     return (1);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:15:31 by sail91            #+#    #+#             */
-/*   Updated: 2026/03/02 20:57:22 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/02 22:22:01 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,20 @@ int  validate_accessibility(char **matrix, t_game *game)
 
     y =game->p_y;
     x =game-> p_x;
-    c_token = 0,
+    c_token = 0;
     copia = copy_matrix(matrix, game->map.rows);
+
+    
     if(!copia)
-    {
-        free_matrix(copia);
+    { // Si copy_matrix falló, 'copia' es NULL, no hay nada que liberar.
         return (0);
     }
-    flood_fill(copia, game, y, x, c_token);
+    flood_fill(copia, game, y, x, &c_token);
+    // printf("matrix[0]: %s\n", copia[3]); // Eliminar printf de depuración
     free_matrix(copia);
-    return ((game->map.coins + game->map.exit) == c_token); 
+    if (c_token != game->map.coins + game->map.exit)
+        return (0);
+    return (1); 
 }
 
 char **copy_matrix(char **matrix, int rows)
@@ -73,11 +77,15 @@ char **copy_matrix(char **matrix, int rows)
     int i;
     char **dest;
     dest = matrix_allocate(rows);
+    i = 0;
     while (i < rows)
     {
         dest[i]=ft_strdup(matrix[i]);
         if (!dest[i])
-            return (0);
+        {
+            free_matrix(dest);
+            return (NULL); // Devolver NULL para char**
+        }
         i++;
     }
     dest[i] = NULL;
@@ -86,14 +94,18 @@ char **copy_matrix(char **matrix, int rows)
 
 void flood_fill(char **copy, t_game *game, int y, int x, int *c_token)
 {
+   // printf("y: %d, x: %d, c_token: %d\n", y, x, *c_token); // Eliminar printf de depuración
     if(y < 0 || y >= game->map.rows || x < 0 || x >= game->map.cols)
         return;
+    // printf("copy[y][x]: %c\n", copy[y][x]); // Eliminar printf de depuración
     if(copy[y][x] == '1')
         return;
+
     if (copy[y][x] == 'V')
         return;
+  
     if(copy[y][x] == 'E' || copy[y][x] == 'C' )
-        c_token++;
+        (*c_token)++;
     copy[y][x] = 'V';
     flood_fill(copy,game, y - 1, x, c_token);
     flood_fill(copy,game, y + 1, x, c_token);
