@@ -6,11 +6,21 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 19:42:41 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/04 12:14:01 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:07:14 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+static void	render_posicion_player(t_game *game, int new_y, int new_x)
+{
+	game->map.grid[game->p_y][game->p_x] = game->prev_tile;
+	game->prev_tile = game->map.grid[new_y][new_x];
+	game->p_y = new_y;
+	game->p_x = new_x;
+	if (game->map.grid[new_y][new_x] != 'E')
+		game->map.grid[new_y][new_x] = 'P';
+}
 
 int	move_player(t_game *game, int new_y, int new_x)
 {
@@ -26,20 +36,15 @@ int	move_player(t_game *game, int new_y, int new_x)
 	{
 		if (game->map.coins == 0)
 		{
-			printf("¡Has ganado en %d movimientos!\n", game->moves + 1);
+			printf("¡Winner in %d moves!\n", game->moves + 1);
 			close_window(game);
 			return (1);
 		}
-		printf("La salida está cerrada.\n");
+		printf("Exit is close, you need pick up all corns.\n");
 	}
 	if (game->map.coins == 0)
 		game->map.exit = 1;
-	game->map.grid[game->p_y][game->p_x] = game->prev_tile;
-	game->prev_tile = game->map.grid[new_y][new_x];
-	game->p_y = new_y;
-	game->p_x = new_x;
-	if (game->map.grid[new_y][new_x] != 'E')
-		game->map.grid[new_y][new_x] = 'P';
+	render_posicion_player(game, new_y, new_x);
 	game->moves++;
 	render_map(game);
 	return (1);

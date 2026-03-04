@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:15:31 by sail91            #+#    #+#             */
-/*   Updated: 2026/03/04 11:57:15 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:04:38 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,13 @@ int	matrix_filler(int rows, char **m, const char *name)
 
 	i = 0;
 	fd = open(name, O_RDONLY);
-	if (fd == -1)
-	{
-		free_matrix(m);
+	if (fd < 0)
 		return (0);
-	}
 	while (i < rows)
 	{
 		m[i] = get_next_line(fd);
-		if (!m[i])
+		if (!m[i] && i != rows - 1)
 		{
-			free_matrix(m);
 			close(fd);
 			return (0);
 		}
@@ -37,6 +33,8 @@ int	matrix_filler(int rows, char **m, const char *name)
 		i++;
 	}
 	m[i] = NULL;
+	free(get_next_line(fd));
+	close(fd);
 	return (1);
 }
 

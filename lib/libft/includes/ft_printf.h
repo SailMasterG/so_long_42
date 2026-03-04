@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 21:19:33 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/19 23:55:45 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:58:09 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

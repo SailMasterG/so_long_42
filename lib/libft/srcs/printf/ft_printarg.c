@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printarg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:17:48 by chguerre          #+#    #+#             */
-/*   Updated: 2026/02/19 23:58:52 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:20:14 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/**We recieve the pointer actual, and verify the type of arg, if
- * there not a valid format, we return 0 value if not we return the quantity of caracaters printed.
+/**We recieve the pointer actual, and
+ * verify the type of arg, if
+ * there not a valid format, we return
+ *  0 value if not we return the quantity of caracaters printed.
  */
 int	printargs(char **str, va_list *args)
 {

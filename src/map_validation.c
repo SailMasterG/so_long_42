@@ -6,11 +6,38 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 21:22:33 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/04 12:20:43 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:22:55 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+int	map_validator(char **map_matrix, t_map *map, t_game *game)
+{
+	if (!map_matrix)
+		return (0);
+	if (!is_rectangle(map_matrix, map))
+	{
+		ft_printf("Error: the map is not a rectangle\n");
+		return (0);
+	}
+	if (!valid_map_char(map_matrix, map, game))
+	{
+		ft_printf("Error: Ivalid element in map\n");
+		return (0);
+	}
+	if (!validate_accessibility(map_matrix, game))
+	{
+		ft_printf("Error: Invalid map, block road\n");
+		return (0);
+	}
+	if (!is_suround_by_mur(map_matrix, map))
+	{
+		ft_printf("Error: is not surounded by walls\n");
+		return (0);
+	}
+	return (1);
+}
 
 int	is_rectangle(char **matrix, t_map *map)
 {
@@ -39,6 +66,23 @@ int	is_rectangle(char **matrix, t_map *map)
 	return (1);
 }
 
+static int	game_tiles_init(char map_matrix, t_game *game, int y, int x)
+{
+	if (map_matrix == 'P')
+	{
+		game->p_x = x;
+		game->p_y = y;
+		game->map.players++;
+	}
+	else if (map_matrix == 'C')
+		game->map.coins++;
+	else if (map_matrix == 'E')
+		game->map.exit++;
+	else if (!ft_strchr("1PCE0", map_matrix))
+		return (0);
+	return (1);
+}
+
 int	valid_map_char(char **map_matrix, t_map *map, t_game *game)
 {
 	int	y;
@@ -50,17 +94,7 @@ int	valid_map_char(char **map_matrix, t_map *map, t_game *game)
 		x = 0;
 		while (map_matrix[y][x] != '\0')
 		{
-			if (map_matrix[y][x] == 'P')
-			{
-				game->p_x = x;
-				game->p_y = y;
-				map->players++;
-			}
-			else if (map_matrix[y][x] == 'C')
-				map->coins++;
-			else if (map_matrix[y][x] == 'E')
-				map->exit++;
-			else if (!ft_strchr("1PCE0", map_matrix[y][x]))
+			if (!game_tiles_init(map_matrix[y][x], game, y, x))
 				return (0);
 			x++;
 		}
@@ -92,36 +126,6 @@ int	is_suround_by_mur(char **map_matrix, t_map *map)
 		else if (map_matrix[i][0] != '1' || map_matrix[i][map->cols - 1] != '1')
 			return (0);
 		i++;
-	}
-	return (1);
-}
-
-int	map_validator(char **map_matrix, t_map *map, t_game *game)
-{
-	if (!map_matrix)
-		return (0);
-	if (!is_rectangle(map_matrix, map))
-	{
-		printf("Error: NO es un RECTANGULO\n");
-		return (0);
-	}
-	map->players = 0;
-	map->exit = 0;
-	map->coins = 0;
-	if (!valid_map_char(map_matrix, map, game))
-	{
-		printf("Error: Mapa invalido, hay un elemento que no debe estar\n");
-		return (0);
-	}
-	if (!validate_accessibility(map_matrix, game))
-	{
-		printf("Error: Mapa invalido, camino bloqueado\n");
-		return (0);
-	}
-	if (!is_suround_by_mur(map_matrix, map))
-	{
-		printf("Error: No esta rodeado completamente por un muro\n");
-		return (0);
 	}
 	return (1);
 }

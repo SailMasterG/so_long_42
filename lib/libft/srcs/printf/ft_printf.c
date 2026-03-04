@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 21:12:23 by chguerre          #+#    #+#             */
-/*   Updated: 2026/01/19 09:44:29 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:21:12 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
-
-// int main(	)
-// {
-// 	char s[] = "Rey David";
-
-// 	printf("\nCantidad de caracteres escritos = %d\n",
-// 		ft_printf("Ft_printf:El cafe es %s\n %p el numero minimo: %i", "MARRON",
-// 			&s,-2147483648));
-
-// 	ft_printf("\nPrueba numero hexadecimal x : %x", -1500);
-// 	ft_printf("\nPrueba numero hexadecimal x : %X\n", -1500);
-
-// 	ft_printf("Hola%u\n",-1);
-// 	printf("\nPrintf:puntero adress %p \n", &s);
-
-// 	ft_printf("Mi nombre es %s\n Tengo %d años\n Naci en %s\n Pero ahorita estoy en %s\n", "Lucas" , 6, "Venezuela");
-
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 22:15:29 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/04 11:19:51 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:49:43 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ void	generate_tile(t_game *game, char tile, int x, int y)
 			sprite(game, game->player, TILE_S * x, TILE_S * y);
 		}
 		else
-		{
 			sprite(game, game->img_exit, TILE_S * x, TILE_S * y);
-		}
 	}
 }
 
-int render_map(t_game *game)
+int	render_map(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	y = 0;
 	while (y < game->map.rows)
 	{
@@ -57,7 +56,8 @@ int render_map(t_game *game)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->canvas.img_ptr, 0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->canvas.img_ptr, 0, 0);
 	contador_moves(game);
 	return (1);
 }
