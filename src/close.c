@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 21:56:40 by chguerre          #+#    #+#             */
-/*   Updated: 2026/03/04 17:00:17 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/03/05 23:58:23 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	free_resources(t_game *game)
 
 void	free_sprites(t_game *game)
 {
-	if (game->player.img_ptr)
-		mlx_destroy_image(game->mlx_ptr, game->player.img_ptr);
 	if (game->floor.img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->floor.img_ptr);
 	if (game->wall.img_ptr)
@@ -46,6 +44,4 @@ void	free_sprites(t_game *game)
 		mlx_destroy_image(game->mlx_ptr, game->img_exit.img_ptr);
 	if (game->colection.img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->colection.img_ptr);
-	if (game->player_win.img_ptr)
-		mlx_destroy_image(game->mlx_ptr, game->player_win.img_ptr);
 }
